@@ -6,7 +6,6 @@ const projects = [
     title: "Bantr Chat Application",
     description:
       "A sleek real-time chat platform built with React and Tailwind, designed for seamless, modern messaging experiences.",
-    image: "/projects/project-1.png",
     tags: ["React", "ExpressJs", "MongoDb"],
     demoUrl: "https://bantr-mern-chatapp-1.onrender.com",
     githubUrl: "https://github.com/ShashwatDubey10/bantr-mern-chatapp",
@@ -17,7 +16,6 @@ const projects = [
     title: "E-commerce Platform",
     description:
       "A full-featured e-commerce frontend built with modern web technologies, offering user authentication flows and payment interface design.",
-    image: "/projects/project-2.png",
     tags: ["JavaScript", "HTML", "CSS"],
     demoUrl: "https://shashwatdubey10.github.io/nexcart-website/html/",
     githubUrl: "https://github.com/ShashwatDubey10/nexcart-website",
