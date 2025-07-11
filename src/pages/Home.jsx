@@ -23,8 +23,8 @@ const Home = () => {
         <SkillsSection />
         <ProjectsSection />
         <ContactSection />
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 };
