@@ -19,6 +19,15 @@ const projects = [
     demoUrl: "https://shashwatdubey10.github.io/nexcart-website/html/",
     githubUrl: "https://github.com/ShashwatDubey10/nexcart-website",
   },
+  {
+    id: 3,
+    title: "Arvyax Wellness",
+    description:
+      "A comprehensive wellness platform supporting guided sessions. Built with an efficient, scalable stack and focused on a smooth user journey.",
+    tags: ["Node.js", "Vercel", "Wellness App"],
+    demoUrl: "https://arvyax-wellness.vercel.app/sessions",
+    githubUrl: "https://github.com/ShashwatDubey10/ArvyaX-Wellness",
+  },
 ];
 
 export const ProjectsSection = () => {
