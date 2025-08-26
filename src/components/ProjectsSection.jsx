@@ -28,6 +28,15 @@ const projects = [
     demoUrl: "https://arvyax-wellness.vercel.app/sessions",
     githubUrl: "https://github.com/ShashwatDubey10/ArvyaX-Wellness",
   },
+  {
+    id: 4,
+    title: "LinkedNest",
+    description:
+      "A professional networking platform to connect professionals and share career journeys, fostering meaningful career growth and opportunities.",
+    tags: ["JavaScript", "React", "Networking"],
+    demoUrl: "https://linkednest-nu.vercel.app/",
+    githubUrl: "https://github.com/ShashwatDubey10/LinkedNest",
+  },
 ];
 
 export const ProjectsSection = () => {
