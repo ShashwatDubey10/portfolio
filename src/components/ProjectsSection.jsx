@@ -1,122 +1,266 @@
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { Reveal } from "./HeroSection";
+import { ArrowRight, Github, ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    id: 1,
-    title: "Bantr Chat Application",
+    id: "bantr",
+    number: "01",
+    title: "Bantr",
+    subtitle: "Real-Time Chat Application",
+    type: "Full Stack Development",
     description:
-      "A sleek real-time chat platform built with React and Tailwind, designed for seamless, modern messaging experiences.",
-    tags: ["React", "ExpressJs", "MongoDb"],
-    demoUrl: "https://bantr-mern-chatapp-1.onrender.com",
-    githubUrl: "https://github.com/ShashwatDubey10/bantr-mern-chatapp",
+      "A real-time chat platform built for seamless, modern messaging. Designed and engineered the full product — from authentication flows and WebSocket-based real-time communication to a clean, responsive UI that prioritises conversation clarity.",
+    bullets: [
+      "Architected real-time messaging with WebSockets enabling sub-100ms message delivery",
+      "Designed user-centric authentication flows with JWT and secure session management",
+      "Built a scalable backend on Express + MongoDB supporting concurrent connections",
+    ],
+    tags: ["React", "Express.js", "MongoDB", "Socket.io"],
+    github: "https://github.com/ShashwatDubey10/bantr-mern-chatapp",
+    demo: "https://bantr-mern-chatapp-1.onrender.com",
+    accentColor: "30 100% 54%", // saffron orange
   },
   {
-    id: 2,
-    title: "E-commerce Platform",
+    id: "savepoint",
+    number: "02",
+    title: "SavePoint",
+    subtitle: "Gamified Productivity App",
+    type: "Product Design & Full Stack Development",
     description:
-      "A full-featured e-commerce frontend built with modern web technologies, offering user authentication flows and payment interface design.",
-    tags: ["JavaScript", "HTML", "CSS"],
-    demoUrl: "https://shashwatdubey10.github.io/nexcart-website/html/",
-    githubUrl: "https://github.com/ShashwatDubey10/nexcart-website",
+      "Independently conceptualized and shipped a gamified productivity application — managing the full product roadmap from ideation to deployment. Authored PRDs and user stories, designed behavioral engagement systems (streaks, rewards) to drive retention, and built the complete MERN stack architecture.",
+    bullets: [
+      "Authored comprehensive PRDs and prioritised product backlog based on user pain points and feasibility",
+      "Designed streak and reward systems to drive user retention and daily engagement habits",
+      "Implemented secure authentication and real-time analytics dashboards on a full MERN stack",
+    ],
+    tags: ["React", "Node.js", "MongoDB", "PRD", "Gamification"],
+    github: "https://github.com/ShashwatDubey10/Save-Point",
+    demo: "https://save-point-psi.vercel.app/",
+    accentColor: "200 90% 55%", // blue
   },
   {
-    id: 3,
-    title: "Arvyax Wellness",
+    id: "paycircle",
+    number: "03",
+    title: "PayCircle",
+    subtitle: "Peer-to-Peer Fintech Platform",
+    type: "Fintech Product Development",
     description:
-      "A comprehensive wellness platform supporting guided sessions. Built with an efficient, scalable stack and focused on a smooth user journey.",
-    tags: ["Node.js", "Vercel", "Wellness App"],
-    demoUrl: "https://arvyax-wellness.vercel.app/sessions",
-    githubUrl: "https://github.com/ShashwatDubey10/ArvyaX-Wellness",
-  },
-  {
-    id: 4,
-    title: "LinkedNest",
-    description:
-      "A professional networking platform to connect professionals and share career journeys, fostering meaningful career growth and opportunities.",
-    tags: ["JavaScript", "React", "Networking"],
-    demoUrl: "https://linkednest-nu.vercel.app/",
-    githubUrl: "https://github.com/ShashwatDubey10/LinkedNest",
+      "Conceived the original product vision and led end-to-end development of a P2P fintech platform, identifying market gaps to define a high-impact MVP. Architected automated debt calculation and settlement notifications, and produced structured PRDs with clearly defined acceptance criteria.",
+    bullets: [
+      "Identified market gap and defined MVP scope for group expense and debt settlement",
+      "Architected automated debt calculation logic and settlement notification system",
+      "Optimised user flows to reduce friction and time-to-settle for shared debts",
+    ],
+    tags: ["Node.js", "React", "PostgreSQL", "Fintech", "PRD"],
+    github: "https://github.com/ShashwatDubey10/PayCircle",
+    demo: null,
+    accentColor: "280 70% 68%", // purple
   },
 ];
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Featured <span className="text-primary">Projects</span>
-        </h2>
+    <section id="projects" className="py-28 px-4 relative overflow-hidden">
+      {/* Ghost number */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute right-[-1rem] top-12 font-display font-extrabold leading-none"
+        style={{
+          fontSize: "clamp(8rem, 18vw, 16rem)",
+          color: "hsl(var(--fg) / 0.025)",
+          letterSpacing: "-0.06em",
+        }}
+      >
+        05
+      </div>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my recent projects. Each project was carefully
-          crafted with attention to detail, performance, and user experience.
-        </p>
+      <div className="container max-w-6xl mx-auto relative z-10">
+        <Reveal className="mb-16">
+          <span className="section-label block mb-3">Things I've Built</span>
+          <h2
+            className="font-display font-extrabold tracking-tighter leading-none"
+            style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}
+          >
+            Selected<br />
+            <span style={{ color: "hsl(var(--accent))" }}>Projects.</span>
+          </h2>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover flex flex-col h-full"
-            >
-              <div className="p-6 flex flex-col flex-1">
-                {/* Description at the top */}
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
+        <Reveal delay={40}>
+          <div className="hr-accent mb-14" />
+        </Reveal>
 
-                {/* Tech tags below description */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground"
+        <div className="space-y-6">
+          {projects.map((project, i) => (
+            <Reveal key={project.id} delay={i * 90}>
+              <div
+                className="group rounded-2xl p-7 md:p-10 transition-all duration-350 cursor-default"
+                style={{
+                  background: "hsl(var(--card))",
+                  border: "1px solid hsl(var(--border))",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `hsl(${project.accentColor} / 0.45)`;
+                  e.currentTarget.style.boxShadow = `0 0 40px hsl(${project.accentColor} / 0.07)`;
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "hsl(var(--border))";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+                  {/* Left — number + meta */}
+                  <div className="flex-shrink-0 lg:w-48">
+                    <div
+                      className="font-display font-extrabold leading-none mb-3 tracking-tighter"
+                      style={{
+                        fontSize: "3.5rem",
+                        color: `hsl(${project.accentColor} / 0.18)`,
+                      }}
                     >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                      {project.number}
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="mono-font text-xs px-2 py-0.5 rounded"
+                          style={{
+                            background: `hsl(${project.accentColor} / 0.1)`,
+                            color: `hsl(${project.accentColor})`,
+                            fontSize: "0.65rem",
+                            letterSpacing: "0.05em",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
 
-                {/* Project title */}
-                <h3 className="text-xl font-semibold mb-4">{project.title}</h3>
+                  {/* Right — content */}
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between gap-4 mb-1 flex-wrap">
+                      <div>
+                        <span
+                          className="section-label block mb-1"
+                          style={{ color: `hsl(${project.accentColor})`, fontSize: "0.6rem" }}
+                        >
+                          {project.type}
+                        </span>
+                        <h3
+                          className="font-display font-extrabold tracking-tight leading-tight"
+                          style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "hsl(var(--fg))" }}
+                        >
+                          {project.title}
+                          <span
+                            className="text-base font-normal ms-2"
+                            style={{ color: "hsl(var(--muted-fg))" }}
+                          >
+                            — {project.subtitle}
+                          </span>
+                        </h3>
+                      </div>
 
-                {/* Links */}
-                <div className="flex justify-between items-center mt-auto">
-                  <div className="flex space-x-3">
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                      aria-label={`View ${project.title} Demo`}
+                      {/* Links */}
+                      <div className="flex items-center gap-3">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} GitHub`}
+                          id={`project-${project.id}-github`}
+                          className="cursor-none w-9 h-9 rounded-full flex items-center justify-center transition-all duration-250"
+                          style={{
+                            background: "hsl(var(--bg))",
+                            border: "1px solid hsl(var(--border))",
+                            color: "hsl(var(--muted-fg))",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = `hsl(${project.accentColor} / 0.6)`;
+                            e.currentTarget.style.color = `hsl(${project.accentColor})`;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = "hsl(var(--border))";
+                            e.currentTarget.style.color = "hsl(var(--muted-fg))";
+                          }}
+                        >
+                          <Github size={15} />
+                        </a>
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${project.title} Live Demo`}
+                            id={`project-${project.id}-demo`}
+                            className="cursor-none w-9 h-9 rounded-full flex items-center justify-center transition-all duration-250"
+                            style={{
+                              background: "hsl(var(--bg))",
+                              border: "1px solid hsl(var(--border))",
+                              color: "hsl(var(--muted-fg))",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.borderColor = `hsl(${project.accentColor} / 0.6)`;
+                              e.currentTarget.style.color = `hsl(${project.accentColor})`;
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.borderColor = "hsl(var(--border))";
+                              e.currentTarget.style.color = "hsl(var(--muted-fg))";
+                            }}
+                          >
+                            <ExternalLink size={15} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+
+                    <p
+                      className="text-sm leading-relaxed mt-4 mb-5"
+                      style={{ color: "hsl(var(--fg) / 0.75)" }}
                     >
-                      <ExternalLink size={20} />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                      aria-label={`View ${project.title} on GitHub`}
-                    >
-                      <Github size={20} />
-                    </a>
+                      {project.description}
+                    </p>
+
+                    <ul className="space-y-2">
+                      {project.bullets.map((b, bi) => (
+                        <li key={bi} className="flex items-start gap-2.5">
+                          <span
+                            className="flex-shrink-0 mt-2 w-1 h-1 rounded-full"
+                            style={{ background: `hsl(${project.accentColor})` }}
+                          />
+                          <span
+                            className="text-xs leading-relaxed"
+                            style={{ color: "hsl(var(--muted-fg))" }}
+                          >
+                            {b}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* GitHub CTA */}
+        <Reveal delay={300} className="mt-12 text-center">
           <a
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
+            href="https://github.com/ShashwatDubey10"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/ShashwatDubey10"
+            id="projects-github-cta"
+            className="cursor-none btn-outline inline-flex items-center gap-2 group"
           >
-            Check My Github <ArrowRight size={16} />
+            <Github size={15} />
+            More on GitHub
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

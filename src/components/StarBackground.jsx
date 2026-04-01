@@ -1,92 +1,69 @@
 import { useEffect, useState } from "react";
 
-// id, size, x, y, opacity, animationDuration
-// id, size, x, y, delay, animationDuration
-
 export const StarBackground = () => {
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
 
   useEffect(() => {
-    generateStars();
-    generateMeteors();
-
-    const handleResize = () => {
-      generateStars();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const generateStars = () => {
-    const numberOfStars = Math.floor(
-      (window.innerWidth * window.innerHeight) / 10000
+    const count = Math.min(
+      Math.floor((window.innerWidth * window.innerHeight) / 9000),
+      140
     );
-
-    const newStars = [];
-
-    for (let i = 0; i < numberOfStars; i++) {
-      newStars.push({
+    setStars(
+      Array.from({ length: count }, (_, i) => ({
         id: i,
-        size: Math.random() * 3 + 1,
+        size: Math.random() * 2 + 0.5,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        opacity: Math.random() * 0.5 + 0.5,
-        animationDuration: Math.random() * 4 + 2,
-      });
-    }
-
-    setStars(newStars);
-  };
-
-  const generateMeteors = () => {
-    const numberOfMeteors = 4;
-    const newMeteors = [];
-
-    for (let i = 0; i < numberOfMeteors; i++) {
-      newMeteors.push({
+        opacity: Math.random() * 0.5 + 0.15,
+        duration: Math.random() * 5 + 2,
+        delay: Math.random() * 6,
+      }))
+    );
+    setMeteors(
+      Array.from({ length: 4 }, (_, i) => ({
         id: i,
-        size: Math.random() * 2 + 1,
+        width: Math.random() * 80 + 60,
+        height: Math.random() * 1 + 1,
         x: Math.random() * 100,
-        y: Math.random() * 20,
-        delay: Math.random() * 15,
-        animationDuration: Math.random() * 3 + 3,
-      });
-    }
-
-    setMeteors(newMeteors);
-  };
+        y: Math.random() * 35,
+        delay: Math.random() * 16,
+        duration: Math.random() * 4 + 5,
+      }))
+    );
+  }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {stars.map((star) => (
+    <div
+      className="fixed inset-0 overflow-hidden pointer-events-none z-0"
+      aria-hidden="true"
+    >
+      {stars.map((s) => (
         <div
-          key={star.id}
+          key={s.id}
           className="star animate-pulse-subtle"
           style={{
-            width: star.size + "px",
-            height: star.size + "px",
-            left: star.x + "%",
-            top: star.y + "%",
-            opacity: star.opacity,
-            animationDuration: star.animationDuration + "s",
+            width: s.size + "px",
+            height: s.size + "px",
+            left: s.x + "%",
+            top: s.y + "%",
+            opacity: s.opacity,
+            animationDuration: s.duration + "s",
+            animationDelay: s.delay + "s",
           }}
         />
       ))}
-
-      {meteors.map((meteor) => (
+      {meteors.map((m) => (
         <div
-          key={meteor.id}
+          key={m.id}
           className="meteor animate-meteor"
           style={{
-            width: meteor.size * 50 + "px",
-            height: meteor.size * 2 + "px",
-            left: meteor.x + "%",
-            top: meteor.y + "%",
-            animationDelay: meteor.delay,
-            animationDuration: meteor.animationDuration + "s",
+            width: m.width + "px",
+            height: m.height + "px",
+            left: m.x + "%",
+            top: m.y + "%",
+            animationDelay: m.delay + "s",
+            animationDuration: m.duration + "s",
           }}
         />
       ))}
