@@ -70,7 +70,7 @@ export const AboutSection = () => {
             <span className="section-label block mb-3">Who I am</span>
             <h2
               className="font-display font-extrabold tracking-tighter leading-none"
-              style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}
+              style={{ fontSize: "clamp(1.8rem, 6vw, 5rem)" }}
             >
               About<br />
               <span style={{ color: "hsl(var(--accent))" }}>Me.</span>

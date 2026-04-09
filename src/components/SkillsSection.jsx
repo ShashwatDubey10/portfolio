@@ -79,7 +79,7 @@ export const SkillsSection = () => {
           <span className="section-label block mb-3">Skill Set</span>
           <h2
             className="font-display font-extrabold tracking-tighter leading-none"
-            style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}
+            style={{ fontSize: "clamp(1.8rem, 6vw, 5rem)" }}
           >
             What I<br />
             <span style={{ color: "hsl(var(--accent))" }}>Bring.</span>

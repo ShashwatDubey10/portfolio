@@ -70,9 +70,10 @@
     100% { transform: translateY(100vh); }
   }
   @keyframes meteor {
-    0%   { transform: rotate(215deg) translateX(0); opacity: 1; }
+    0%   { transform: rotate(215deg) translateX(0);       opacity: 0; }
+    8%   { opacity: 1; }
     70%  { opacity: 1; }
-    100% { transform: rotate(215deg) translateX(-600px); opacity: 0; }
+    100% { transform: rotate(215deg) translateX(-700px);  opacity: 0; }
   }
   @keyframes gradient-flow {
     0%   { background-position: 0% 50%; }
@@ -158,6 +159,11 @@
   ::-webkit-scrollbar-track { background: hsl(var(--bg)); }
   ::-webkit-scrollbar-thumb { background: hsl(var(--accent) / 0.35); border-radius: 99px; }
   ::-webkit-scrollbar-thumb:hover { background: hsl(var(--accent) / 0.7); }
+
+  /* Offset anchor scroll so fixed navbar doesn't cover headings */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
 }
 
 /* ─── UTILITIES ───────────────────────────────────── */

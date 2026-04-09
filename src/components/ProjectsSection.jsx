@@ -82,7 +82,7 @@ export const ProjectsSection = () => {
           <span className="section-label block mb-3">Things I've Built</span>
           <h2
             className="font-display font-extrabold tracking-tighter leading-none"
-            style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}
+            style={{ fontSize: "clamp(1.8rem, 6vw, 5rem)" }}
           >
             Selected<br />
             <span style={{ color: "hsl(var(--accent))" }}>Projects.</span>
@@ -184,7 +184,7 @@ export const ProjectsSection = () => {
                         </span>
                         <h3
                           className="font-display font-extrabold tracking-tight leading-tight"
-                          style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "hsl(var(--fg))" }}
+                          style={{ fontSize: "clamp(1.2rem, 3vw, 2rem)", color: "hsl(var(--fg))" }}
                         >
                       {project.title}
                           <span

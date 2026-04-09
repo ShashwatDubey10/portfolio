@@ -21,14 +21,15 @@ export const StarBackground = () => {
       }))
     );
     setMeteors(
-      Array.from({ length: 4 }, (_, i) => ({
+      Array.from({ length: 5 }, (_, i) => ({
         id: i,
-        width: Math.random() * 80 + 60,
-        height: Math.random() * 1 + 1,
-        x: Math.random() * 100,
-        y: Math.random() * 35,
-        delay: Math.random() * 16,
-        duration: Math.random() * 4 + 5,
+        width:    Math.random() * 100 + 80,   // 80–180px long
+        height:   1,
+        // Spawn in top-right quadrant so travel direction (down-left) looks natural
+        x: 55 + Math.random() * 40,           // 55–95% from left
+        y: -2 + Math.random() * 18,           // -2% to 16% from top (above or near top edge)
+        delay:    i * 3.5 + Math.random() * 2,// staggered, not random clumping
+        duration: Math.random() * 3 + 5,      // 5–8s
       }))
     );
   }, []);

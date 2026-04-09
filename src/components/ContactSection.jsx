@@ -79,7 +79,7 @@ export const ContactSection = () => {
           <span className="section-label block mb-3">Let's Connect</span>
           <h2
             className="font-display font-extrabold tracking-tighter leading-none"
-            style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}
+            style={{ fontSize: "clamp(1.8rem, 6vw, 5rem)" }}
           >
             Get In<br />
             <span style={{ color: "hsl(var(--accent))" }}>Touch.</span>

@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ROLES = [
   "Aspiring Product Manager",
@@ -44,9 +44,22 @@ export const Reveal = ({ children, delay = 0, fromLeft = false, className = "" }
 };
 
 export const HeroSection = () => {
-  const roleRef = useRef(null);
-  const idxRef = useRef(0);
+  const roleRef  = useRef(null);
+  const idxRef   = useRef(0);
   const timerRef = useRef(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  // Hide scroll cue after first scroll
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 0) {
+        setHasScrolled(true);
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     let char = 0;
@@ -83,6 +96,7 @@ export const HeroSection = () => {
     <section
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-4 overflow-hidden"
+      style={{ paddingTop: "clamp(4.5rem, 12vh, 7rem)" }}
     >
       {/* Large ghost "01" — editorial decoration, clipped to prevent mobile overflow */}
       <div
@@ -99,7 +113,7 @@ export const HeroSection = () => {
         01
       </div>
 
-      <div className="container max-w-6xl mx-auto z-10 pt-20 sm:pt-28 pb-16 sm:pb-20">
+      <div className="container max-w-6xl mx-auto z-10 pb-16 sm:pb-20">
         <div className="max-w-4xl">
 
           {/* Section label */}
@@ -115,7 +129,7 @@ export const HeroSection = () => {
           {/* Name */}
           <h1
             className="opacity-0 animate-fade-in-delay-1 font-display font-extrabold tracking-tighter leading-[0.92] mb-5 select-none"
-            style={{ fontSize: "clamp(3.2rem, 9.5vw, 8.5rem)" }}
+            style={{ fontSize: "clamp(2.2rem, 9vw, 8.5rem)" }}
           >
             Shashwat<br />
             <span style={{ color: "hsl(var(--accent))" }}>Dubey</span>
@@ -183,12 +197,17 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Animated scroll line */}
+      {/* Scroll cue — visible until user scrolls, then fades out */}
       <a
         href="#about"
         id="hero-scroll-cue"
         aria-label="Scroll to about"
         className="cursor-none absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in-delay-5"
+        style={{
+          opacity: hasScrolled ? 0 : undefined,
+          transition: "opacity 0.5s ease",
+          pointerEvents: hasScrolled ? "none" : "auto",
+        }}
       >
         <span className="section-label" style={{ fontSize: "0.58rem" }}>scroll</span>
         <div className="w-px h-14 relative overflow-hidden" style={{ background: "hsl(var(--border))" }}>
