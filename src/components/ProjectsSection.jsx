@@ -60,15 +60,18 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-28 px-4 relative overflow-hidden">
-      {/* Ghost number */}
+    <section id="projects" className="py-16 sm:py-28 px-4 relative overflow-hidden">
+      {/* Ghost number — clipped */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute right-[-1rem] top-12 font-display font-extrabold leading-none"
+        className="pointer-events-none select-none absolute right-0 top-12 font-display font-extrabold leading-none"
         style={{
-          fontSize: "clamp(8rem, 18vw, 16rem)",
+          fontSize: "clamp(5rem, 18vw, 16rem)",
           color: "hsl(var(--fg) / 0.025)",
           letterSpacing: "-0.06em",
+          right: "-1rem",
+          maxWidth: "60vw",
+          overflow: "hidden",
         }}
       >
         05
@@ -94,7 +97,7 @@ export const ProjectsSection = () => {
           {projects.map((project, i) => (
             <Reveal key={project.id} delay={i * 90}>
               <div
-                className="group rounded-2xl p-7 md:p-10 transition-all duration-350 cursor-default"
+                className="group rounded-2xl p-5 sm:p-7 md:p-10 transition-all duration-350 cursor-default"
                 style={{
                   background: "hsl(var(--card))",
                   border: "1px solid hsl(var(--border))",
@@ -110,9 +113,38 @@ export const ProjectsSection = () => {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
-                  {/* Left — number + meta */}
-                  <div className="flex-shrink-0 lg:w-48">
+                {/* Mobile: number inline with links; Desktop: sidebar */}
+                <div className="flex items-start justify-between lg:hidden mb-4">
+                  <div
+                    className="font-display font-extrabold leading-none tracking-tighter"
+                    style={{ fontSize: "2.5rem", color: `hsl(${project.accentColor} / 0.22)` }}
+                  >
+                    {project.number}
+                  </div>
+                  {/* Links — mobile top-right */}
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={project.github} target="_blank" rel="noopener noreferrer"
+                      aria-label={`${project.title} GitHub`}
+                      id={`project-${project.id}-github-m`}
+                      className="w-9 h-9 rounded-full flex items-center justify-center"
+                      style={{ background: "hsl(var(--bg))", border: "1px solid hsl(var(--border))", color: "hsl(var(--muted-fg))" }}
+                    ><Github size={15} /></a>
+                    {project.demo && (
+                      <a
+                        href={project.demo} target="_blank" rel="noopener noreferrer"
+                        aria-label={`${project.title} Live Demo`}
+                        id={`project-${project.id}-demo-m`}
+                        className="w-9 h-9 rounded-full flex items-center justify-center"
+                        style={{ background: "hsl(var(--bg))", border: "1px solid hsl(var(--border))", color: "hsl(var(--muted-fg))" }}
+                      ><ExternalLink size={15} /></a>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8">
+                  {/* Left sidebar — desktop only */}
+                  <div className="hidden lg:block flex-shrink-0 lg:w-48">
                     <div
                       className="font-display font-extrabold leading-none mb-3 tracking-tighter"
                       style={{
@@ -154,9 +186,9 @@ export const ProjectsSection = () => {
                           className="font-display font-extrabold tracking-tight leading-tight"
                           style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "hsl(var(--fg))" }}
                         >
-                          {project.title}
+                      {project.title}
                           <span
-                            className="text-base font-normal ms-2"
+                            className="block sm:inline text-base font-normal sm:ms-2"
                             style={{ color: "hsl(var(--muted-fg))" }}
                           >
                             — {project.subtitle}
@@ -164,8 +196,8 @@ export const ProjectsSection = () => {
                         </h3>
                       </div>
 
-                      {/* Links */}
-                      <div className="flex items-center gap-3">
+                      {/* Links — desktop only (mobile shown above) */}
+                      <div className="hidden lg:flex items-center gap-3">
                         <a
                           href={project.github}
                           target="_blank"

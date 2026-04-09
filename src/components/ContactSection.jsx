@@ -48,15 +48,18 @@ const socials = [
 
 export const ContactSection = () => {
   return (
-    <section id="contact" className="py-28 px-4 relative overflow-hidden">
-      {/* Ghost number */}
+    <section id="contact" className="py-16 sm:py-28 px-4 relative overflow-hidden">
+      {/* Ghost number — clipped */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute left-[-1rem] top-12 font-display font-extrabold leading-none"
+        className="pointer-events-none select-none absolute left-0 top-12 font-display font-extrabold leading-none"
         style={{
-          fontSize: "clamp(8rem, 18vw, 16rem)",
+          fontSize: "clamp(5rem, 18vw, 16rem)",
           color: "hsl(var(--fg) / 0.025)",
           letterSpacing: "-0.06em",
+          left: "-1rem",
+          maxWidth: "70vw",
+          overflow: "hidden",
         }}
       >
         06
@@ -125,7 +128,7 @@ export const ContactSection = () => {
                         >
                           {label}
                         </div>
-                        <div className="text-sm font-medium" style={{ color: "hsl(var(--fg))" }}>
+                        <div className="text-sm font-medium truncate" style={{ color: "hsl(var(--fg))" }}>
                           {value}
                         </div>
                       </div>

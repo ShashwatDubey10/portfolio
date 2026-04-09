@@ -20,15 +20,18 @@ const experience = [
 
 export const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-28 px-4 relative overflow-hidden">
-      {/* Ghost number */}
+    <section id="experience" className="py-16 sm:py-28 px-4 relative overflow-hidden">
+      {/* Ghost number — clipped to prevent overflow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute left-[-1rem] top-12 font-display font-extrabold leading-none"
+        className="pointer-events-none select-none absolute left-0 top-12 font-display font-extrabold leading-none"
         style={{
-          fontSize: "clamp(8rem, 18vw, 16rem)",
+          fontSize: "clamp(5rem, 18vw, 16rem)",
           color: "hsl(var(--fg) / 0.025)",
           letterSpacing: "-0.06em",
+          left: "-1rem",
+          maxWidth: "70vw",
+          overflow: "hidden",
         }}
       >
         03
@@ -52,7 +55,7 @@ export const ExperienceSection = () => {
         {experience.map((exp, i) => (
           <Reveal key={exp.company} delay={i * 80}>
             <div
-              className="rounded-2xl p-7 md:p-10 transition-all duration-300 cursor-default"
+              className="rounded-2xl p-5 sm:p-7 md:p-10 transition-all duration-300 cursor-default"
               style={{
                 background: "hsl(var(--card))",
                 border: "1px solid hsl(var(--border))",

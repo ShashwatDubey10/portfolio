@@ -13,7 +13,11 @@ import { Footer } from "../components/Footer.jsx";
 // Custom cursor — updates DOM elements created in index.css
 const useCursor = () => {
   useEffect(() => {
-    const dot = document.getElementById("cursor-dot");
+    // Skip entirely on touch-only devices
+    const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    if (isTouch) return;
+
+    const dot  = document.getElementById("cursor-dot");
     const ring = document.getElementById("cursor-ring");
     if (!dot || !ring) return;
 
@@ -26,8 +30,8 @@ const useCursor = () => {
     const loop = () => {
       rx += (tx - rx) * 0.15;
       ry += (ty - ry) * 0.15;
-      dot.style.left = tx + "px";
-      dot.style.top  = ty + "px";
+      dot.style.left  = tx + "px";
+      dot.style.top   = ty + "px";
       ring.style.left = rx + "px";
       ring.style.top  = ry + "px";
       raf = requestAnimationFrame(loop);
@@ -47,7 +51,6 @@ const useCursor = () => {
     };
     refresh();
 
-    // Re-attach after hydration
     const observer = new MutationObserver(refresh);
     observer.observe(document.body, { childList: true, subtree: true });
 

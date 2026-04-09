@@ -46,23 +46,26 @@ const education = [
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-28 px-4 relative overflow-hidden">
-      {/* Ghost number */}
+    <section id="about" className="py-16 sm:py-28 px-4 relative overflow-hidden">
+      {/* Ghost number — clipped */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute left-[-1rem] top-12 font-display font-extrabold leading-none"
+        className="pointer-events-none select-none absolute left-0 top-12 font-display font-extrabold leading-none"
         style={{
-          fontSize: "clamp(8rem, 18vw, 16rem)",
+          fontSize: "clamp(5rem, 18vw, 16rem)",
           color: "hsl(var(--fg) / 0.025)",
           letterSpacing: "-0.06em",
+          left: "-1rem",
+          maxWidth: "70vw",
+          overflow: "hidden",
         }}
       >
         02
       </div>
 
       <div className="container max-w-6xl mx-auto relative z-10">
-        {/* Header */}
-        <Reveal className="flex items-end justify-between gap-4 mb-16 flex-wrap">
+        {/* Header — stacks vertically on mobile */}
+        <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-16">
           <div>
             <span className="section-label block mb-3">Who I am</span>
             <h2

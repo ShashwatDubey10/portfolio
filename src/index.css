@@ -117,7 +117,8 @@
   html {
     scroll-behavior: smooth;
     font-family: "Space Grotesk", system-ui, sans-serif;
-    cursor: none; /* custom cursor */
+    cursor: none; /* custom cursor — overridden for touch below */
+    overflow-x: hidden;
   }
 
   body {
@@ -126,6 +127,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+  }
+
+  /* Reset cursor on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    html, body, * {
+      cursor: auto !important;
+    }
   }
 
   /* Noise overlay for texture */
@@ -328,6 +336,16 @@
 }
 
 /* ─── CUSTOM CURSOR ───────────────────────────────── */
+/* Hide entirely on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  #cursor-dot,
+  #cursor-ring {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  html { cursor: auto !important; }
+  * { cursor: auto !important; }
+}
 #cursor-dot {
   position: fixed;
   top: 0; left: 0;

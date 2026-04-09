@@ -84,21 +84,22 @@ export const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-4 overflow-hidden"
     >
-      {/* Large ghost "01" — editorial decoration */}
+      {/* Large ghost "01" — editorial decoration, clipped to prevent mobile overflow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute right-0 top-1/2 -translate-y-1/2 font-display font-extrabold leading-none"
+        className="pointer-events-none select-none absolute right-0 top-1/2 -translate-y-1/2 font-display font-extrabold leading-none overflow-hidden"
         style={{
-          fontSize: "clamp(12rem, 28vw, 26rem)",
+          fontSize: "clamp(8rem, 28vw, 26rem)",
           color: "hsl(var(--fg) / 0.028)",
           letterSpacing: "-0.06em",
-          right: "-1rem",
+          right: "-2rem",
+          maxWidth: "60vw",
         }}
       >
         01
       </div>
 
-      <div className="container max-w-6xl mx-auto z-10 pt-28 pb-20">
+      <div className="container max-w-6xl mx-auto z-10 pt-20 sm:pt-28 pb-16 sm:pb-20">
         <div className="max-w-4xl">
 
           {/* Section label */}
@@ -123,7 +124,7 @@ export const HeroSection = () => {
           {/* Typewriter */}
           <div
             className="opacity-0 animate-fade-in-delay-2 flex items-center gap-2 mb-7"
-            style={{ fontFamily: "'JetBrains Mono', monospace", color: "hsl(var(--muted-fg))", fontSize: "1.05rem" }}
+            style={{ fontFamily: "'JetBrains Mono', monospace", color: "hsl(var(--muted-fg))", fontSize: "clamp(0.8rem, 2.5vw, 1.05rem)" }}
           >
             <span style={{ color: "hsl(var(--accent))" }}>~/</span>
             <span ref={roleRef} />

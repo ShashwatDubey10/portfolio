@@ -49,15 +49,18 @@ const skillGroups = [
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" className="py-28 px-4 relative overflow-hidden">
+    <section id="skills" className="py-16 sm:py-28 px-4 relative overflow-hidden">
       {/* Ghost number */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute right-[-1rem] top-12 font-display font-extrabold leading-none"
+        className="pointer-events-none select-none absolute right-0 top-12 font-display font-extrabold leading-none"
         style={{
-          fontSize: "clamp(8rem, 18vw, 16rem)",
+          fontSize: "clamp(5rem, 18vw, 16rem)",
           color: "hsl(var(--fg) / 0.025)",
           letterSpacing: "-0.06em",
+          right: "-1rem",
+          maxWidth: "60vw",
+          overflow: "hidden",
         }}
       >
         04
